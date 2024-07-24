@@ -18,7 +18,7 @@ class ProgressSpinnerVanilla {
 
   /** Updates #elementDescription content */
   #updateDescription = () => {
-    this.#componentDescription.textContent = `Loading on ${ this.value / this.maxValue * 100}%, ${this.isAnimated ? "animating" : "not animating" }, ${this.isHidden ? "hidden" : "visible"}`;
+    this.#componentDescription.textContent = `Loading on ${ this.#value / this.#maxValue * 100}%, ${this.#isAnimated ? "animating" : "not animating" }, ${this.#isHidden ? "hidden" : "visible"}`;
   };
 
   /** Stores value controller attribute name @type {string} */
@@ -32,14 +32,18 @@ class ProgressSpinnerVanilla {
   /** Stores value attribute name @type {string} */
   static #valueAttributeName = "value";
   /** Stores current value @type {number} @default 0 */
-  value = 0;
+  #value = 0;
+  get value() {
+    return this.#value;
+  }
 
   /** Stores value attribute name @type {string} */
   static #maxValueAttributeName = "max";
   /** Stores the maximum value @type {number} @default 100 */
-  maxValue = 100;
-
-  static controllerCallbackSuffix = "ControllerChangeCallback";
+  #maxValue = 100;
+  get maxValue() {
+    return this.#maxValue;
+  }
 
   /** Stores animate controller attribute name @type {string} */
   static #animateControlledByAttribute = "animate-controlledby";
@@ -50,7 +54,10 @@ class ProgressSpinnerVanilla {
   /** Stores animate attribute name @type {string} */
   static #animateAttributeName = "isAnimated";
   /** Stores current animation state @type {boolean} @default false */
-  isAnimated = false;
+  #isAnimated = false;
+  get isAnimated() {
+    return this.#isAnimated;
+  }
 
   /** Stores hide controller attribute name @type {string} */
   static #hideClassName = "progress-spinner--hidden";
@@ -61,7 +68,10 @@ class ProgressSpinnerVanilla {
   /** Stores hide attribute name @type {string} */
   static #hideAttributeName = "isHidden";
   /** Stores current hide state @type {boolean} @default false */
-  isHidden = false;
+  #isHidden = false;
+  get isHidden() {
+    return this.#isHidden;
+  }
 
   /** @param {HTMLDivElement} controlledElement */
   constructor(controlledElement) {
@@ -82,9 +92,9 @@ class ProgressSpinnerVanilla {
 
   /** Updates value @param {number} newValue */
   setValue(newValue) {
-    this.value = newValue;
+    this.#value = newValue;
     this.#controlledElement.setAttribute(ProgressSpinnerVanilla.#valueAttributeName, String(newValue));
-    this.#controlledElement.style.setProperty(ProgressSpinnerVanilla.#valueCustomPropertyName, String(Math.max(Math.min(this.maxValue, newValue), 0)));
+    this.#controlledElement.style.setProperty(ProgressSpinnerVanilla.#valueCustomPropertyName, String(Math.max(Math.min(this.#maxValue, newValue), 0)));
     this.#updateDescription();
   }
 
@@ -92,19 +102,19 @@ class ProgressSpinnerVanilla {
   setMaxValue(newValue) {
     this.#controlledElement.setAttribute(ProgressSpinnerVanilla.#maxValueAttributeName, String(newValue));
     this.#controlledElement.style.setProperty(ProgressSpinnerVanilla.#maxValueCustomPropertyName, String(newValue));
-    this.maxValue = Number(newValue);
+    this.#maxValue = Number(newValue);
   }
 
   /** Updates animate state @param {boolean} newValue */
   setAnimate(newValue) {
-    this.isAnimated = newValue;
+    this.#isAnimated = newValue;
     this.#controlledElement.setAttribute(ProgressSpinnerVanilla.#animateAttributeName, String(newValue));
     this.#setBooleanState(newValue, ProgressSpinnerVanilla.#animatedClassName);
   }
 
   /** Updates hide state @param {boolean} newValue */
   setHide(newValue) {
-    this.isHidden = newValue;
+    this.#isHidden = newValue;
     this.#controlledElement.setAttribute(ProgressSpinnerVanilla.#hideAttributeName, String(newValue));
     this.#setBooleanState(newValue, ProgressSpinnerVanilla.#hideClassName);
   }
@@ -194,7 +204,7 @@ class ProgressSpinnerVanilla {
    */
   #setControlledByBoolean = (checkboxInputElement, className, property) => {
     const onChangeCallback = () => {
-      this[property] = checkboxInputElement.checked;
+      this["#" + property] = checkboxInputElement.checked;
       this.#setBooleanState(checkboxInputElement.checked, className);
       this.#updateDescription();
     };
@@ -219,7 +229,7 @@ class ProgressSpinnerVanilla {
     if (declaredMaxValue) {
       this.setMaxValue(Number(declaredMaxValue));
     } else {
-      this.setMaxValue(this.maxValue);
+      this.setMaxValue(this.#maxValue);
     }
 
 
