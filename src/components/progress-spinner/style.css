@@ -36,16 +36,19 @@
   stroke-dashoffset: calc(var(--length) * (var(--progress-spinner__max-value) - var(--progress-spinner__value)) / var(--progress-spinner__max-value));
   stroke-width: 10px;
   fill: none;
+  /** We can remove initial animation with 
+   *  @start-style, but I think it looks ok.
+   */
   animation: cancelRotation 200ms var(--easing) 1 both;
   transition:
     stroke-dashoffset 200ms var(--easing)
   ;
-  --base-rotation: -90deg;
-  --current-rotation: 0;
+   --base-rotation: 270deg;
+   --current-rotation: 0;
 }
 
 .progress-spinner--animated > .progress-spinner__arc {
-  animation: rotate 1s linear infinite both;
+  animation: rotate 1s linear infinite;
 }
 
 @keyframes cancelRotation {
@@ -61,7 +64,10 @@
     transform: rotateZ(var(--base-rotation));
   }
   to {
+    /** @bug(webkit): Animation behaves unstable when
+     *  the variable is passed into the transform.
+     */
     --current-rotation: calc(var(--base-rotation) + 1turn);
-    transform: rotateZ(var(--current-rotation));
+    transform: rotateZ(calc(var(--base-rotation) + 1turn));
   }
 }
