@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=320, initial-scale=1">
-    <title>Progress Spinner on Webc</title>
+    <title>Progress Spinner on Declarative Shadow DOM</title>
     <style>
       @font-face {
         font-weight: 550;
         font-family: "Monsterrat";
         font-style: normal;
         font-display: swap;
-        src: 
+        src:
           url("/assets/fonts/montserrat-subset.ttf") format("truetype-variations"),
           url("/assets/fonts/montserrat-subset.woff") format("woff-variations"),
           url("/assets/fonts/montserrat-subset.woff2") format("woff2-variable");
@@ -21,7 +21,7 @@
         letter-spacing: -0.008em;
       }
     </style>
-    <script src="/script.js" type="module" async></script>
+    <script src="/script.js" type="module" defer></script>
     <link rel="stylesheet" href="/style/utils.css">
     <link rel="stylesheet" href="/style/theme.css">
     <link rel="stylesheet" href="/style/style.css">
@@ -30,19 +30,82 @@
     <div class="app-layout">
       <h1 class="layout__header">Progress</h1>
       <progress-spinner
-        value="75"
         data-value-controlledby="#value"
         data-animate-controlledby="#animate"
         data-hide-controlledby="#hide"
-        max="100"
       >
+        <template shadowrootmode="open">
+          <link slot="theme" rel="stylesheet" href="/components/default-theme.css">
+          <link slot="theme" rel="stylesheet" href="/components/progress-spinner/style.css">
+          <slot name="theme"></slot>
+          <div class="progress__circle">
+            <svg class="progress__range"
+              role="image"
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              aria-describedby="range-descripion"
+            >
+              <title>Loading state</title>
+              <text id="range-descripion" class="visually-hidden">Loading on %</text>
+              <circle cx="50%" cy="50%" r="50%" fill="none">
+            </svg>
+          </div>
+        </template>
       </progress-spinner>
       <br>
       <controls-stack>
-        <input-number id="value" value="75" max="100"></input-number>
-        <input-checkbox id="animate" label="Animate"></input-checkbox>
-        <input-checkbox id="hide" label="Hide"></input-checkbox>
-      </controls-stack>
+        <template shadowrootmode="open">
+          <fieldset class="progress__controls">
+            <legend class="visually-hidden">Progress Controls</legend>
+            <link slot="theme" rel="stylesheet" href="/style/utils.css">
+            <link slot="theme" rel="stylesheet" href="/components/controls-stack/style.css">
+            <slot name="theme"></slot>
+            <slot></slot>
+          </fieldset>
+        </template>
+        <input-number id="value">
+          <template shadowrootmode="open">
+            <label class="controls__control">
+              <link slot="theme" rel="stylesheet" href="/components/control/style.css">
+              <slot name="theme"></slot>
+              <input
+                class="control__input control__input--number control__input--value" 
+                type="number" 
+                value="75" 
+                min="0" 
+                max="100"
+              >
+              <span class="control__label">Value</span>
+            </label>
+          </template>
+        </input-number>
+        <input-checkbox id="animate">
+        <template shadowrootmode="open">
+        <label class="controls__control">
+          <link slot="theme" rel="stylesheet" href="/components/control/style.css">
+          <slot name="theme"></slot>
+          <input class="control__input control__input--checkbox control__input--animate" type="checkbox">
+          <span class="control__label">Animate</span>
+        </label>
+      </template>
+      </input-checkbox>
+      <input-checkbox id="hide">
+        <template shadowrootmode="open">
+        <label class="controls__control">
+          <link slot="theme" rel="stylesheet" href="/components/control/style.css">
+          <slot name="theme"></slot>
+          <input class="control__input control__input--checkbox control__input--hide" type="checkbox">
+          <span class="control__label">Hide</span>
+        </label>
+      </template>
+    </input-checkbox>
+    </controls-stack>
+    <style>
+      fieldset {
+        border: 10px solid red;
+      }
+    </style>
     </div>
   </body>
 </html>
