@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=320, initial-scale=1">
+    <title>Progress Spinner</title>
+    <link rel="icon" href="/assets/images/favicon/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/assets/images/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon.png">
+    <style>
+      @font-face {
+        font-weight: 550;
+        font-family: "Monsterrat";
+        font-style: normal;
+        font-display: swap;
+        src:
+          url("/assets/fonts/montserrat-subset.woff2") format("woff2"),
+          url("/assets/fonts/montserrat-subset.woff") format("woff"),
+          url("/assets/fonts/montserrat-subset.ttf") format("truetype");
+      }
+
+      body {
+        font-size: 16px;
+        font-family: "Monsterrat", sans-serif;
+        font-size-adjust: unset;
+        letter-spacing: -0.008em;
+      }
+    </style>
+    <link rel="preload" href="/assets/fonts/montserrat-subset.woff2" as="font" crossorigin type="font/woff2">
+    <link rel="stylesheet" href="/style/utils.css">
+    <link rel="stylesheet" href="/style/theme.css">
+    <link rel="stylesheet" href="/style/style.css">
+    <script src="/script.js" type="module" defer></script>
+  </head>
+  <body>
+    <div class="layout">
+      <h1 class="layout__header">Progress</h1>
+      <div class="progress-spinner"
+        value-controlledby="#value"
+        animate-controlledby="#animate"
+        hide-controlledby="#hide"
+      >
+        <link class="progress-spinner-style" rel="stylesheet" href="/components/progress-spinner/style.css">
+        <svg class="progress-spinner__arc"
+          role="image"
+          width="100%"
+          height="100%"
+          aria-describedby="progress-spinner__description"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>Loading state</title>
+          <text id="progress-spinner__description" class="visually-hidden">Uninitialized</text>
+          <circle cx="50%" cy="50%" r="50%" fill="none"></circle>
+        </svg>
+      </div>
+      <br>
+      <fieldset class="layout__inputs-stack inputs-stack">
+        <legend class="visually-hidden">Progress Controls</legend>
+        <link class="inputs-stack-style" rel="stylesheet" href="/components/inputs-stack/style.css">
+        <label class="input">
+          <link class="input-style" rel="stylesheet" href="/components/input/style.css">
+          <input
+            id="value"
+            class="input__value input__value--number input__value--value" 
+            type="number" 
+            value="75" 
+            min="0" 
+            max="100"
+          >
+          <span class="control__label">Value</span>
+        </label>
+        <label class="input">
+          <link class="input-style" rel="stylesheet" href="/components/input/style.css">
+          <input id="animate" class="input__value input__value--checkbox input__value--animate" type="checkbox">
+          <span class="control__label">Animate</span>
+        </label>
+        <label class="input">
+          <link class="input-style" rel="stylesheet" href="/components/input/style.css">
+          <input id="hide" class="input__value input__value--checkbox input__value--hide" type="checkbox">
+          <span class="control__label">Hide</span>
+        </label>
+      </fieldset>
+    </div>
+  </body>
+</html>
