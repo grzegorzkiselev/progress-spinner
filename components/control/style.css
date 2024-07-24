@@ -1,20 +1,20 @@
-.input {
+.controls__control {
   display: flex;
   align-items: center;
   gap: calc(var(--micromodule) * 2);
   width: fit-content;
 }
 
-.input__value::-webkit-outer-spin-button,
-.input__value::-webkit-inner-spin-button {
+.control__input::-webkit-outer-spin-button,
+.control__input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.input__value[type=number] {
+.control__input[type=number] {
   -moz-appearance: textfield;
 }
 
-.input__value {
+.control__input {
   position: relative;
   display: inline-block;
   margin: 0;
@@ -34,11 +34,11 @@
   --height: calc(var(--switch-side) + var(--padding) * 2);
 }
 
-.input__value--checkbox {
+.control__input--checkbox {
   background-color: var(--color-background);
 }
 
-.input__value--checkbox::before {
+.control__input--checkbox::before {
   position: absolute;
   inset: 0;
   display: block;
@@ -49,11 +49,11 @@
   transition: filter 150ms var(--easing);
 }
 
-.input__value--checkbox:checked:before {
+.control__input--checkbox:checked:before {
   filter: opacity(1);
 }
 
-.input__value--checkbox::after {
+.control__input--checkbox::after {
   position: relative;
   display: block;
   width: var(--switch-side);
@@ -64,11 +64,11 @@
   transition: transform 150ms var(--easing)
 }
 
-.input__value--checkbox:checked:after {
+.control__input--checkbox:checked:after {
   transform: translateX(var(--travel-length));
 }
 
-.input__value--number {
+.control__input--number {
   width: calc(var(--switch-side) + var(--travel-length) - var(--border-width) * 2);
   height: calc(var(--switch-side) - var(--border-width) * 2);
   border: #000 var(--border-width) solid;

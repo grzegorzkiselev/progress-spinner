@@ -23,7 +23,7 @@ class ControlsStack extends HTMLElement {
       generatedElement,
     );
 
-    const themeOverride = this.shadowRoot.querySelector("[name='theme']").assignedNodes()[0];
+    const themeOverride = this.shadowRoot.querySelector("[name='theme']")?.assignedNodes()[0];
 
     if (themeOverride) {
       this.shadowRoot.append(
