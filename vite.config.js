@@ -37,6 +37,9 @@ export default defineConfig({
     outDir: path.resolve(DIST),
     emptyOutDir: true,
   },
+  server: {
+    port: 8080,
+  },
   plugins: [
     MinifyHtmlPlugin(),
   ],

@@ -31,12 +31,12 @@ class ProgressSpinnerVanilla {
   static #maxValueCustomPropertyName = "--progress-spinner__max-value";
   /** Stores value attribute name @type {string} */
   static #valueAttributeName = "value";
-  /** Stores current value @type {number} */
+  /** Stores current value @type {number} @default 0 */
   value = 0;
 
   /** Stores value attribute name @type {string} */
   static #maxValueAttributeName = "max";
-  /** Stores the maximum value @type {number} */
+  /** Stores the maximum value @type {number} @default 100 */
   maxValue = 100;
 
   static controllerCallbackSuffix = "ControllerChangeCallback";
@@ -49,7 +49,7 @@ class ProgressSpinnerVanilla {
   static #animatedClassName = "progress-spinner--animated";
   /** Stores animate attribute name @type {string} */
   static #animateAttributeName = "isAnimated";
-  /** Stores current animation state @type {boolean} */
+  /** Stores current animation state @type {boolean} @default false */
   isAnimated = false;
 
   /** Stores hide controller attribute name @type {string} */
@@ -60,7 +60,7 @@ class ProgressSpinnerVanilla {
   static #hideControlledByAttribute = "hide-controlledby";
   /** Stores hide attribute name @type {string} */
   static #hideAttributeName = "isHidden";
-  /** Stores current hide state @type {boolean} */
+  /** Stores current hide state @type {boolean} @default false */
   isHidden = false;
 
   /** @param {HTMLDivElement} controlledElement */

@@ -7,12 +7,12 @@ class InputNumberVanilla extends CustomInputVanilla {
 
   /** @type {string} Stores minimum value attribute name */
   static #minValueAttributeName = "min";
-  /** @type {number} Minimal value */
+  /** Minimal value @type {number} @default 0 */
   min = 0;
 
-  /** @type {string} Stores maximum value attribute name */
+  /** Stores maximum value attribute name @type {string} */
   static #maxValueAttributeName = "max";
-  /** @type {number} Maximum value */
+  /** Maximum value @type {number} @default 100 */
   max = 100;
 
   /** @param {number} newValue */
