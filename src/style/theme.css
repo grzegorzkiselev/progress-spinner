@@ -1,7 +1,0 @@
-:root {
-  --color-background: #eef3f6;
-  --color-accent: #005bff;
-  --easing: cubic-bezier(0.6, .5, .55, 1.05);
-  --micromodule: 10px;
-  --base-module: calc(var(--micromodule) * 10);
-}

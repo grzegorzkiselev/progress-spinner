@@ -1,4 +1,5 @@
-.progress-spinner {
+:host,
+.progress__circle {
   aspect-ratio: 1/1;
   position: relative;
   max-width: 100%;
@@ -12,7 +13,7 @@
   --length: calc(2 * 3.14 * var(--radius));
 }
 
-.progress-spinner::before {
+.progress__circle::before {
   position: absolute;
   inset: -5px;
   display: block;
@@ -21,11 +22,11 @@
   content: "";
 }
 
-.progress-spinner--hidden {
+.progress__circle--hidden {
   filter: opacity(0);
 }
 
-.progress-spinner__arc {
+.progress__range {
   position: relative;
   display: block;
   max-width: 100%;
@@ -44,7 +45,7 @@
   --current-rotation: 0;
 }
 
-.progress-spinner--animated > .progress-spinner__arc {
+.progress__circle--animated > .progress__range {
   animation: rotate 1s linear infinite both;
 }
 

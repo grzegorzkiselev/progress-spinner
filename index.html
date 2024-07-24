@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=320, initial-scale=1">
+    <title>Progress Spinner on Webc</title>
+    <style>
+      @font-face {
+        font-weight: 550;
+        font-family: "Monsterrat";
+        font-style: normal;
+        font-display: swap;
+        src: 
+          url("/assets/fonts/montserrat-subset.ttf") format("truetype-variations"),
+          url("/assets/fonts/montserrat-subset.woff") format("woff-variations"),
+          url("/assets/fonts/montserrat-subset.woff2") format("woff2-variable");
+      }
+      body {
+        font-size: 16px;
+        font-family: "Monsterrat", sans-serif;
+        letter-spacing: -0.008em;
+      }
+    </style>
+    <script src="/script.js" type="module" async></script>
+    <link rel="stylesheet" href="/style/utils.css">
+    <link rel="stylesheet" href="/style/theme.css">
+    <link rel="stylesheet" href="/style/style.css">
+  </head>
+  <body>
+    <div class="app-layout">
+      <h1 class="layout__header">Progress</h1>
+      <progress-spinner
+        value="75"
+        data-value-controlledby="#value"
+        data-animate-controlledby="#animate"
+        data-hide-controlledby="#hide"
+        max="100"
+      >
+      </progress-spinner>
+      <br>
+      <controls-stack>
+        <input-number id="value" value="75" max="100"></input-number>
+        <input-checkbox id="animate" label="Animate"></input-checkbox>
+        <input-checkbox id="hide" label="Hide"></input-checkbox>
+      </controls-stack>
+    </div>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-.layout {
+.app-layout {
   display: grid;
   grid-template: var(--layout) / 1fr;
   justify-content: center;
@@ -21,13 +21,9 @@
 }
 
 @media screen and (orientation: landscape) {
-  .layout {
+  .app-layout {
     grid-template: 1fr / var(--layout);
     justify-items: center;
     align-items: center;
-  }
-
-  .layout__inputs-stack {
-    justify-self: start;
   }
 }

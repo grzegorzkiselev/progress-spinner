@@ -1,9 +1,8 @@
-.inputs-stack {
+.progress__controls {
   display: grid;
   grid-auto-rows: auto;
-  align-items: start;
   gap: 10px;
   margin: 0;
   padding: 0;
-  border: 0
+  border: 0;
 }
