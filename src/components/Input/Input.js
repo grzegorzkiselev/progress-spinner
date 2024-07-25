@@ -1,6 +1,6 @@
 import { TypeGuards } from "../../utils/TypeGuards.js";
 
-class CustomInputVanilla {
+class CustomInput {
   /** @type {HTMLInputElement} */
   inputElement;
 
@@ -14,4 +14,4 @@ class CustomInputVanilla {
   }
 }
 
-export { CustomInputVanilla };
+export { CustomInput };

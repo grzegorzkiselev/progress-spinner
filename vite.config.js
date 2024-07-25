@@ -1,4 +1,4 @@
-import minifyHtml from "@minify-html/node";
+//import minifyHtml from "@minify-html/node";
 import { defineConfig } from "vite";
 import path from "node:path";
 
@@ -41,6 +41,6 @@ export default defineConfig({
     port: 8080,
   },
   plugins: [
-    MinifyHtmlPlugin(),
+ //   MinifyHtmlPlugin(),
   ],
 });

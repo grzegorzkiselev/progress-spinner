@@ -1,7 +1,7 @@
 import { TypeGuards } from "../../utils/TypeGuards.js";
-import { CustomInputVanilla } from "./Input.js";
+import { CustomInput } from "./Input.js";
 
-class InputNumberVanilla extends CustomInputVanilla {
+class InputNumber extends CustomInput {
   /** @type {string} Stores value attribute name */
   static #valueAttributeName = "value";
 
@@ -52,4 +52,4 @@ class InputNumberVanilla extends CustomInputVanilla {
   };
 }
 
-export { InputNumberVanilla };
+export { InputNumber };

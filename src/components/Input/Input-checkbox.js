@@ -1,7 +1,7 @@
 import { TypeGuards } from "../../utils/TypeGuards.js";
-import { CustomInputVanilla } from "./Input.js";
+import { CustomInput } from "./Input.js";
 
-class InputCheckboxVanilla extends CustomInputVanilla {
+class InputCheckbox extends CustomInput {
 
   get checked() {
     return this.inputElement.checked;
@@ -17,4 +17,4 @@ class InputCheckboxVanilla extends CustomInputVanilla {
   }
 }
 
-export { InputCheckboxVanilla };
+export { InputCheckbox };
