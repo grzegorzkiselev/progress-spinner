@@ -10,8 +10,8 @@ Insert this tag into your page to get minimal working component.
 
 ```html
 <div class="progress-spinner">
-  <link rel="stylesheet" href="./components/progress-spinner/style.css">
-  <script type="module" src="./components/progress-spinner/script.js" defer></script>
+  <link rel="stylesheet" href="./components/Progress-spinner/style.css">
+  <script type="module" src="./components/Progress-spinner/script.js" defer></script>
   <svg class="progress-spinner__arc"
     role="image"
     xmlns="http://www.w3.org/2000/svg"
@@ -29,8 +29,8 @@ Insert this tag into your page to get minimal working component.
 #### Declare default properties
 
 You can easily set default properties right into html element using `value` and `max` attributes.
-— The `value` is used to set initial progress.
-— The `max` is used to set value, when arc will be closed.
+- The `value` is used to set initial progress.
+- The `max` is used to set value, when arc will be closed.
 
 ```html
     <div 
@@ -57,8 +57,6 @@ You can easily set default properties right into html element using `value` and 
 #### Link with existing inputs in HTML
 
 You can link progress, animate and hide state with existing input elements. For this use `value-controlledby`, `animate-controlledby` and `hide-controlledby` respectively.
-The `value` is used to set initial progress.
-The `max` is used to set value, when arc will be closed
 
 ```html
     <div 
@@ -69,8 +67,8 @@ The `max` is used to set value, when arc will be closed
  +    animate-controlledby="<selector for the input with type of checkbox>"
  +    hide-controlledby="<selector for the input with type of checkbox>"
     >
-      <link rel="stylesheet" href="./components/progress-spinner/style.css">
-      <script type="module" src="./components/progress-spinner/script.js" defer></script>
+      <link rel="stylesheet" href="./components/Progress-spinner/style.css">
+      <script type="module" src="./components/Progress-spinner/script.js" defer></script>
       <svg class="progress-spinner__arc"
         role="image"
         xmlns="http://www.w3.org/2000/svg"
@@ -88,8 +86,6 @@ The `max` is used to set value, when arc will be closed
 #### Link with existing inputs in JS
 
 You can link progress, animate and hide state with existing input elements. For this use `value-controlledby`, `animate-controlledby` and `hide-controlledby` respectively.
-The `value` is used to set initial progress.
-The `max` is used to set value, when arc will be closed.
 
 ### JavaScript Api
 
@@ -97,8 +93,8 @@ If you want to get access to the component from JavaScript, you don’t need thi
 
 ```html
     <div class="progress-spinner">
-      <link rel="stylesheet" href="./components/progress-spinner/style.css">
- −    <script type="module" src="./components/progress-spinner/script.js" defer></script>
+      <link rel="stylesheet" href="./components/Progress-spinner/style.css">
+ −    <script type="module" src="./components/Progress-spinner/script.js" defer></script>
       <svg class="progress-spinner__arc"
         role="image"
         xmlns="http://www.w3.org/2000/svg"
@@ -114,8 +110,8 @@ If you want to get access to the component from JavaScript, you don’t need thi
 ```
 
 ```js
- +  import { ProgressInputVanilla } from "./components/control/Input-checkbox-vanilla.js";
- +  const progressInput = new ProgressInputVanilla(document.querySelector(".progress-spinner"));
+ +  import { ProgressInput } from "./components/control/Input-checkbox.js";
+ +  const progressInput = new ProgressInput(document.querySelector(".progress-spinner"));
 ```
 
 #### Update properties directly
@@ -123,8 +119,8 @@ If you want to get access to the component from JavaScript, you don’t need thi
 To set value, animate or hide, use `setValue`, `setAnimate` and `setHide` respectively.
 
 ```js
-    import { ProgressInputVanilla } from "./components/control/Input-checkbox-vanilla.js";
-    const progressInput = new ProgressInputVanilla(document.querySelector(".progress-spinner"));
+    import { ProgressInput } from "./components/control/Input-checkbox.js";
+    const progressInput = new ProgressInput(document.querySelector(".progress-spinner"));
 
  +  progressInput.setValue(20);
  +  progressInput.setAnimate(true);
@@ -136,8 +132,8 @@ To set value, animate or hide, use `setValue`, `setAnimate` and `setHide` respec
 Just like we declared controllers inside html, we can attach them from JavaScript.
 
 ```js
-    import { ProgressInputVanilla } from "./components/control/Input-checkbox-vanilla.js";
-    const progressInput = new ProgressInputVanilla(document.querySelector(".progress-spinner"));
+    import { ProgressInput } from "./components/control/Input-checkbox.js";
+    const progressInput = new ProgressInput(document.querySelector(".progress-spinner"));
 
  −  progressInput.setValue(20);
  −  progressInput.setAnimate(true);
@@ -151,8 +147,8 @@ Just like we declared controllers inside html, we can attach them from JavaScrip
 To detach them, use `remove*` methods.
 
 ```js
-    import { ProgressInputVanilla } from "./components/control/Input-checkbox-vanilla.js";
-    const progressInput = new ProgressInputVanilla(document.querySelector(".progress-spinner"));
+    import { ProgressInput } from "./components/control/Input-checkbox.js";
+    const progressInput = new ProgressInput(document.querySelector(".progress-spinner"));
 
     progressInput.setValueController(<selector for the input with type of number>);
     progressInput.setAnimateController(<selector for the input with type of checkbox>);
