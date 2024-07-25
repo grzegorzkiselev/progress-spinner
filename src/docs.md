@@ -38,8 +38,9 @@ You can easily set default properties right into html element using `value` and 
  +    value="50"
  +    max="200"
     >
-      <link rel="stylesheet" href="./components/progress-spinner/style.css">
-      <script type="module" src="./components/progress-spinner/script.js" defer></script>
+      <link rel="stylesheet" href="./components/Progress-spinner/style.css">
+      <script type="module" src="./components/p
+      Progress-spinner/script.js" defer></script>
       <svg class="progress-spinner__arc"
         role="image"
         xmlns="http://www.w3.org/2000/svg"
