@@ -1,6 +1,6 @@
 import { TypeGuards } from "../../utils/TypeGuards.js";
 
-class ProgressSpinnerVanilla {
+class ProgressSpinner {
   /** Element used as an entry point for setting attributes and classes.
    * @type {HTMLDivElement}
    */
@@ -81,7 +81,7 @@ class ProgressSpinnerVanilla {
       throw new Error(TypeGuards.notValidElementErrorMessage + this.#controlledElement);
     }
 
-    this.#componentDescription = this.#controlledElement.querySelector(ProgressSpinnerVanilla.#componentDescriptionSelector);
+    this.#componentDescription = this.#controlledElement.querySelector(ProgressSpinner.#componentDescriptionSelector);
 
     if (!TypeGuards.isValidElement(this.#componentDescription, SVGTextElement)) {
       throw new Error(TypeGuards.notValidElementErrorMessage + this.#componentDescription);
@@ -93,30 +93,30 @@ class ProgressSpinnerVanilla {
   /** Updates value @param {number} newValue */
   setValue(newValue) {
     this.#value = newValue;
-    this.#controlledElement.setAttribute(ProgressSpinnerVanilla.#valueAttributeName, String(newValue));
-    this.#controlledElement.style.setProperty(ProgressSpinnerVanilla.#valueCustomPropertyName, String(Math.max(Math.min(this.#maxValue, newValue), 0)));
+    this.#controlledElement.setAttribute(ProgressSpinner.#valueAttributeName, String(newValue));
+    this.#controlledElement.style.setProperty(ProgressSpinner.#valueCustomPropertyName, String(Math.max(Math.min(this.#maxValue, newValue), 0)));
     this.#updateDescription();
   }
 
   /** Updates max value @param {number} newValue */
   setMaxValue(newValue) {
-    this.#controlledElement.setAttribute(ProgressSpinnerVanilla.#maxValueAttributeName, String(newValue));
-    this.#controlledElement.style.setProperty(ProgressSpinnerVanilla.#maxValueCustomPropertyName, String(newValue));
+    this.#controlledElement.setAttribute(ProgressSpinner.#maxValueAttributeName, String(newValue));
+    this.#controlledElement.style.setProperty(ProgressSpinner.#maxValueCustomPropertyName, String(newValue));
     this.#maxValue = Number(newValue);
   }
 
   /** Updates animate state @param {boolean} newValue */
   setAnimate(newValue) {
     this.#isAnimated = newValue;
-    this.#controlledElement.setAttribute(ProgressSpinnerVanilla.#animateAttributeName, String(newValue));
-    this.#setBooleanState(newValue, ProgressSpinnerVanilla.#animatedClassName);
+    this.#controlledElement.setAttribute(ProgressSpinner.#animateAttributeName, String(newValue));
+    this.#setBooleanState(newValue, ProgressSpinner.#animatedClassName);
   }
 
   /** Updates hide state @param {boolean} newValue */
   setHide(newValue) {
     this.#isHidden = newValue;
-    this.#controlledElement.setAttribute(ProgressSpinnerVanilla.#hideAttributeName, String(newValue));
-    this.#setBooleanState(newValue, ProgressSpinnerVanilla.#hideClassName);
+    this.#controlledElement.setAttribute(ProgressSpinner.#hideAttributeName, String(newValue));
+    this.#setBooleanState(newValue, ProgressSpinner.#hideClassName);
   }
 
   /** Adds class if true, remove if false
@@ -169,7 +169,7 @@ class ProgressSpinnerVanilla {
     ```
    */
   setAnimateController = (animateControllerElement) => {
-    this.#setControlledByBoolean(animateControllerElement, ProgressSpinnerVanilla.#animatedClassName, ProgressSpinnerVanilla.#animateAttributeName);
+    this.#setControlledByBoolean(animateControllerElement, ProgressSpinner.#animatedClassName, ProgressSpinner.#animateAttributeName);
   };
 
   removeAnimateController = (animateControllerElement) => {
@@ -189,7 +189,7 @@ class ProgressSpinnerVanilla {
     ```
    */
   setHideController = (hideControllerElement) => {
-    this.#setControlledByBoolean(hideControllerElement, ProgressSpinnerVanilla.#hideClassName, ProgressSpinnerVanilla.#hideAttributeName);
+    this.#setControlledByBoolean(hideControllerElement, ProgressSpinner.#hideClassName, ProgressSpinner.#hideAttributeName);
   };
 
   removeHideController = (hideControllerElement) => {
@@ -209,7 +209,7 @@ class ProgressSpinnerVanilla {
       this.#updateDescription();
     };
 
-    property === ProgressSpinnerVanilla.#animateAttributeName
+    property === ProgressSpinner.#animateAttributeName
       ? (this.#isAnimatedControllerChangeCallback = onChangeCallback)
       : (this.#isHiddenControllerChangeCallback = onChangeCallback);
 
@@ -221,11 +221,11 @@ class ProgressSpinnerVanilla {
 
   /** Links component to defined controllers or sets the default values */
   #setControlledProperties = () => {
-    const valueControllerSelector = this.#controlledElement.getAttribute(ProgressSpinnerVanilla.#valueControlledByAttribute);
-    const animateControllerSelector = this.#controlledElement.getAttribute(ProgressSpinnerVanilla.#animateControlledByAttribute);
-    const hideControllerSelector = this.#controlledElement.getAttribute(ProgressSpinnerVanilla.#hideControlledByAttribute);
+    const valueControllerSelector = this.#controlledElement.getAttribute(ProgressSpinner.#valueControlledByAttribute);
+    const animateControllerSelector = this.#controlledElement.getAttribute(ProgressSpinner.#animateControlledByAttribute);
+    const hideControllerSelector = this.#controlledElement.getAttribute(ProgressSpinner.#hideControlledByAttribute);
 
-    const declaredMaxValue = this.#controlledElement.getAttribute(ProgressSpinnerVanilla.#maxValueAttributeName);
+    const declaredMaxValue = this.#controlledElement.getAttribute(ProgressSpinner.#maxValueAttributeName);
     if (declaredMaxValue) {
       this.setMaxValue(Number(declaredMaxValue));
     } else {
@@ -242,7 +242,7 @@ class ProgressSpinnerVanilla {
 
       this.setValueController(valueController);
     } else {
-      const declaredValue = this.#controlledElement.getAttribute(ProgressSpinnerVanilla.#valueAttributeName);
+      const declaredValue = this.#controlledElement.getAttribute(ProgressSpinner.#valueAttributeName);
       declaredValue && this.setValue(Number(declaredValue));
     }
 
@@ -253,9 +253,9 @@ class ProgressSpinnerVanilla {
         throw new Error(TypeGuards.notValidElementErrorMessage + animateController);
       }
 
-      this.#setControlledByBoolean(animateController, ProgressSpinnerVanilla.#animatedClassName, ProgressSpinnerVanilla.#animateAttributeName);
+      this.#setControlledByBoolean(animateController, ProgressSpinner.#animatedClassName, ProgressSpinner.#animateAttributeName);
     } else {
-      const declaredAnimate = this.#controlledElement.getAttribute(ProgressSpinnerVanilla.#animateAttributeName);
+      const declaredAnimate = this.#controlledElement.getAttribute(ProgressSpinner.#animateAttributeName);
       declaredAnimate && this.setAnimate(Boolean(declaredAnimate));
     }
 
@@ -266,12 +266,12 @@ class ProgressSpinnerVanilla {
         throw new Error(TypeGuards.notValidElementErrorMessage + hideController);
       }
 
-      this.#setControlledByBoolean(hideController, ProgressSpinnerVanilla.#hideClassName, ProgressSpinnerVanilla.#hideAttributeName);
+      this.#setControlledByBoolean(hideController, ProgressSpinner.#hideClassName, ProgressSpinner.#hideAttributeName);
     } else {
-      const declaredHide = this.#controlledElement.getAttribute(ProgressSpinnerVanilla.#hideAttributeName);
+      const declaredHide = this.#controlledElement.getAttribute(ProgressSpinner.#hideAttributeName);
       declaredHide && this.setAnimate(Boolean(declaredHide));
     }
   };
 }
 
-export { ProgressSpinnerVanilla };
+export { ProgressSpinner };
