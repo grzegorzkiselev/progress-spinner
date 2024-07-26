@@ -17,7 +17,7 @@ class InputNumber extends CustomInput {
 
   /** @param {number} newValue */
   set value(newValue) {
-    this.inputElement.setAttribute(InputNumberVanilla.#valueAttributeName, String(newValue));
+    this.inputElement.setAttribute(InputNumber.#valueAttributeName, String(newValue));
     this.inputElement.value = String(newValue);
   }
 
@@ -33,13 +33,13 @@ class InputNumber extends CustomInput {
 
     super(inputNumberElement);
 
-    const definedMin = this.inputElement.getAttribute(InputNumberVanilla.#minValueAttributeName);
+    const definedMin = this.inputElement.getAttribute(InputNumber.#minValueAttributeName);
     definedMin && (this.min = Number(definedMin));
 
-    const definedMax = this.inputElement.getAttribute(InputNumberVanilla.#maxValueAttributeName);
+    const definedMax = this.inputElement.getAttribute(InputNumber.#maxValueAttributeName);
     definedMax && (this.max = Number(definedMax));
 
-    const definedValue = this.inputElement.getAttribute(InputNumberVanilla.#valueAttributeName);
+    const definedValue = this.inputElement.getAttribute(InputNumber.#valueAttributeName);
     definedValue && (this.value = Number(definedValue));
 
     this.inputElement.addEventListener("change", this.onChange);

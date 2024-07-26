@@ -1,2 +1,2 @@
-import { ProgressSpinnerVanilla } from "./Progress-spinner-vanilla.js";
-new ProgressSpinnerVanilla(document.querySelector(".progress-spinner"));
+import { ProgressSpinner } from "./Progress-spinner.js";
+new ProgressSpinner(document.querySelector(".progress-spinner"));
